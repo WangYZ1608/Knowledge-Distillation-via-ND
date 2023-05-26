@@ -1,5 +1,5 @@
 # Knowledge Distillation via ND
-Implementation of the paper: Improving Knowledge Distillation via Regularizing Feature Norm and Direction.
+Implementation for the paper: Improving Knowledge Distillation via Regularizing Feature Norm and Direction.
 
 ## CIFAR-100 Classification
 
