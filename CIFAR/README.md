@@ -6,6 +6,7 @@
 - torchvision 0.11.0
 - Please put the CIFAR100 dataset in ./Dataset/
 - Download the [cifar_teachers](https://github.com/megvii-research/mdistiller/releases/tag/checkpoints) and untar it to `./ckpt/teacher`.
+- Our models checkpoints and trained tensorboard logs are at [ckpt and logs](https://github.com/megvii-research/mdistiller/releases/tag/checkpoints)
 
 ### 1. naive train student baselines and evaluation
   ```bash
