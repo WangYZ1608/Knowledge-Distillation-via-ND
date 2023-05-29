@@ -5,17 +5,18 @@
 - PyTorch 1.10.0
 - torchvision 0.11.0
 - Please put the CIFAR100 dataset in ./Dataset/
+- Download the [cifar_teachers](https://github.com/megvii-research/mdistiller/releases/tag/checkpoints) and untar it to `./ckpt/teacher`.
 
-### 1. naive train teacher and student baselines
+### 1. naive train student baselines and evaluation
   ```bash
-  # for instance, train ResNet-56 on CIFAR-100.
+  # for instance, train ResNet-20 on CIFAR-100.
   python3 train_cifar_baseline.py \
-        --model_name resnet56_cifar \
+        --model_name resnet20_cifar \
         --dataset 'cifar100' \
         --epoch 240 \
         --batch_size 64 \
         --lr 0.1 \
-        --save_dir "./run/resnet56"
+        --save_dir "./run/resnet20"
   ```
 ### 2. compute the class-mean of teachers on training set
   ```bash
@@ -25,7 +26,7 @@
         --emb_size 64 \
         --dataset 'cifar100' \
         --batch_size 128
-  # The class-mean results, json file, be put in ckpt/teacher/.
+  # The class-mean results, json file, be put in ./ckpt/teacher/.
   # e.g., ckpt/teacher/resnet56/center_emb_train.json
   ```
 
