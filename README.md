@@ -69,3 +69,16 @@ Please refer to [ImageNet](https://github.com/WangYZ1608/Knowledge-Distillation-
 ### 2.3  COCO Detection
 
 Please refer to [Detection](https://github.com/WangYZ1608/Knowledge-Distillation-via-ND/tree/main/Detection) for more details.
+
+## 3. Citation
+If you use ND in your research, please consider citing:
+```BibTeX
+@misc{wang2023improving,
+      title={Improving Knowledge Distillation via Regularizing Feature Norm and Direction}, 
+      author={Yuzhu Wang and Lechao Cheng and Manni Duan and Yongheng Wang and Zunlei Feng and Shu Kong},
+      year={2023},
+      eprint={2305.17007},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+```
