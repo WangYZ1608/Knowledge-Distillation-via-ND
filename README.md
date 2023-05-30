@@ -1,5 +1,5 @@
-# Knowledge Distillation via ND
-Pytorch implementation for the paper: Improving Knowledge Distillation via Regularizing Feature Norm and Direction.
+# Improving Knowledge Distillation via Regularizing Feature Norm and Direction
+Pytorch implementation for the paper: [Improving Knowledge Distillation via Regularizing Feature Norm and Direction](https://arxiv.org/abs/2305.17007).
 
 ## 0. Framework
 
@@ -28,7 +28,7 @@ The ND loss, that regularizes the Norm and Direction of the student features, be
 | **DKD++** | 72.16(+0.19) | 75.02(+0.21) | **76.28**(+0.84) | **70.82**(+0.47) | 77.11(+0.66) | 77.49(+0.42) |
 | **ReviewKD++** | 72.05(+0.16) | **75.66**(+0.57) | 76.07(+0.44) | 70.45(+0.56) | **77.68**(+0.23) | 77.93(+0.15) |
 
-'*' represents our reproduced based on the official code [DKD](https://github.com/megvii-research/mdistiller).
+'*' represents our reproduced results based on the official code [DKD](https://github.com/megvii-research/mdistiller).
 
 ### 1.2 ImageNet-1k
  - Comparisons with State-of-the-art Results
@@ -48,8 +48,6 @@ The ND loss, that regularizes the Norm and Direction of the student features, be
 |Res-18 | Res-152 | 69.76 | 78.31 | 71.12 | 71.36 | 71.97 | **72.54** | 71.79 | 72.48 |
 |Res-18 | ViT-S | 69.76 | 74.64 | 71.32 | - | 71.21 | **71.46** | - | 71.33 |
 |Res-18 | ViT-B | 69.76 | 78.00 | 71.63 | - | 71.62 | **71.84** | - | 71.69 |
-
-note: The ViT's results are lower than published, that due to the use of ResNet-type evaluation.
 
  - Multiple Experiments With Error Bars
  
