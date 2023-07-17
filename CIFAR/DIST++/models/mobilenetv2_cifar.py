@@ -1,7 +1,6 @@
 import torch
 import torch.nn as nn
 import math
-from torchsummaryX import summary
 
 
 __all__ = ["mobilenetv2"]
@@ -161,6 +160,3 @@ def mobilenetv2_T_w(T, W, feature_dim=100):
 
 def mobilenetv2(num_class=100):
     return mobilenetv2_T_w(6, 0.5, num_class)
-
-# model = mobilenetv2(num_class=100)
-# summary(model, torch.ones(128, 3, 32, 32))

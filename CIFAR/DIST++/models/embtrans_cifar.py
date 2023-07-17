@@ -1,5 +1,4 @@
 import torch.nn as nn
-from torchsummaryX import summary
 
 class EmbTrans(nn.Module):
 

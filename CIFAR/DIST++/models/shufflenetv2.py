@@ -1,7 +1,6 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from torchsummaryX import summary
 
 class ShuffleBlock(nn.Module):
     def __init__(self, groups=2):
@@ -171,7 +170,3 @@ configs = {
 def shufflev2_cifar(**kwargs):
     model = ShuffleNetV2(net_size=1, **kwargs)
     return model
-
-
-# model = shufflev2_cifar(num_class=100)
-# summary(model, torch.ones(1, 3, 32, 32))

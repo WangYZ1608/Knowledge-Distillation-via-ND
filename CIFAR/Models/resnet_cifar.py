@@ -1,9 +1,10 @@
-import torch, math
+import torch
 import torch.nn as nn
 
-__all__ = ['resnet20_cifar', 'resnet8x4_cifar', 'resnet56_cifar', 'resnet32x4_cifar']
+__all__ = ['resnet8_cifar', 'resnet20_cifar', 'resnet8x4_cifar', 'resnet56_cifar', 'resnet32x4_cifar']
 
 res = {
+    "resnet8" : [16, 16, 32, 64],
     "resnet20": [16, 16, 32, 64],
     "resnet8x4": [32, 64, 128, 256],
     "resnet56": [16, 16, 32, 64],
@@ -157,6 +158,10 @@ class ResNet(nn.Module):
             return emb_fea, logits
         else:
             return logits
+
+
+def resnet8_cifar(model_name='resnet8', **kwargs):
+    return ResNet(8, res[model_name], BasicBlock, **kwargs)
 
 
 def resnet20_cifar(model_name='resnet20', **kwargs):

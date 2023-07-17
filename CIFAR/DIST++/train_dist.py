@@ -7,15 +7,13 @@ from torch.utils.data import DataLoader
 import torch.nn.functional as F
 import torch.backends.cudnn as cudnn
 
-import models
-from models.embtrans_cifar import EmbTrans
+import Models
+from Models.embtrans_cifar import EmbTrans
 from Dataset import CIFAR
 from utils import colorstr, Save_Checkpoint, AverageMeter, DirectNormLoss, DIST
-from torchsummaryX import summary
 
 import numpy as np
 from pathlib import Path
-import os
 import time
 import json
 import random
@@ -126,7 +124,7 @@ def epoch_loop(model, teacher, train_set, test_set, args):
     # optimizer
     optimizer = torch.optim.SGD(params=model.parameters(), lr=args.lr, momentum=args.momentum, weight_decay=args.weight_decay, nesterov=True)
     
-    # 权重
+    # weights
     save_dir = Path(args.save_dir)
     weights = save_dir / 'weights'
     weights.mkdir(parents=True, exist_ok=True)
@@ -243,9 +241,9 @@ def epoch_loop(model, teacher, train_set, test_set, args):
 
 
 if __name__ == "__main__":
-    model_names = sorted(name for name in models.__dict__ 
+    model_names = sorted(name for name in Models.__dict__ 
                          if name.islower() and not name.startswith("__") 
-                         and callable(models.__dict__[name]))
+                         and callable(Models.__dict__[name]))
 
     parser = argparse.ArgumentParser(description='PyTorch Cifar Training')
     parser.add_argument("--model_name", type=str, default="resnet20_cifar", choices=model_names, help="model architecture")
@@ -291,10 +289,10 @@ if __name__ == "__main__":
     logger.info(colorstr('green', "Distribute train, gpus:{}, total batch size:{}, epoch:{}".format(args.gpus, args.batch_size, args.epochs)))
     
     train_set, test_set, num_class = CIFAR(name=args.dataset)
-    model = models.__dict__[args.model_name](num_class=num_class)
+    model = Models.__dict__[args.model_name](num_class=num_class)
     if args.model_name in ['wrn40_1_cifar', 'mobilenetv2', 'shufflev1_cifar', 'shufflev2_cifar']:
         model = EmbTrans(student=model, model_name=args.model_name)
-    teacher = models.__dict__[args.teacher](num_class=num_class)
+    teacher = Models.__dict__[args.teacher](num_class=num_class)
 
     # resnet56/resnet32x4, no need emb size
     if args.teacher_weights:

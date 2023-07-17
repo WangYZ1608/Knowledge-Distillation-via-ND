@@ -1,19 +1,10 @@
-"""
-Instantiates the ResNet, ResNetV2, and ResNeXt architecture.
-# Reference
-- [Deep Residual Learning for Image Recogntion] https://arxiv.org/abs/1512.03385) (CVPR 2015)
-- [Identity Mappings in Deep Residual Networks] (https://arxiv.org/abs/1603.05027) (CVPR 2016)
-超参数遵从
-- [Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour] (https://arxiv.org/abs/1706.02677) (CVPR 2017)
-"""
-
-import torch, math
+import torch
 import torch.nn as nn
-from torchsummaryX import summary
 
-__all__ = ['resnet20_cifar', 'resnet8x4_cifar', 'resnet56_cifar', 'resnet32x4_cifar']
+__all__ = ['resnet8_cifar', 'resnet20_cifar', 'resnet8x4_cifar', 'resnet56_cifar', 'resnet32x4_cifar']
 
 res = {
+    "resnet8" : [16, 16, 32, 64],
     "resnet20": [16, 16, 32, 64],
     "resnet8x4": [32, 64, 128, 256],
     "resnet56": [16, 16, 32, 64],
@@ -169,6 +160,10 @@ class ResNet(nn.Module):
             return logits
 
 
+def resnet8_cifar(model_name='resnet8', **kwargs):
+    return ResNet(8, res[model_name], BasicBlock, **kwargs)
+
+
 def resnet20_cifar(model_name='resnet20', **kwargs):
     return ResNet(20, res[model_name], BasicBlock, **kwargs)
 
@@ -183,10 +178,3 @@ def resnet56_cifar(model_name='resnet56', **kwargs):
 
 def resnet32x4_cifar(model_name='resnet32x4', **kwargs):
     return ResNet(32, res[model_name], BasicBlock, **kwargs)
-
-
-# model = resnet20_cifar(num_class=100)
-# model = resnet8x4_cifar(num_class=100)
-# model = resnet56_cifar(num_class=100)
-# model = resnet32x4_cifar(num_class=100)
-# summary(model, torch.ones(128, 3, 32, 32))

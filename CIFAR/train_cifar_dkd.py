@@ -14,7 +14,6 @@ from utils import colorstr, Save_Checkpoint, AverageMeter, DirectNormLoss, DKDLo
 
 import numpy as np
 from pathlib import Path
-import os
 import time
 import json
 import random
@@ -22,7 +21,7 @@ import logging
 import argparse
 import warnings
 from torch.utils.tensorboard import SummaryWriter
-import pdb
+
 
 def train(model, teacher, T_EMB, train_dataloader, optimizer, criterion, dkd_loss, nd_loss, args, epoch):
     train_loss = AverageMeter()
@@ -125,7 +124,7 @@ def epoch_loop(model, teacher, train_set, test_set, args):
     # optimizer
     optimizer = torch.optim.SGD(params=model.parameters(), lr=args.lr, momentum=args.momentum, weight_decay=args.weight_decay, nesterov=True)
     
-    # 权重
+    # weights
     save_dir = Path(args.save_dir)
     weights = save_dir / 'weights'
     weights.mkdir(parents=True, exist_ok=True)

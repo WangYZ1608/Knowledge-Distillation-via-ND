@@ -4,22 +4,11 @@
 - Python 3.6.9
 - PyTorch 1.10.0
 - torchvision 0.11.0
-- Please put the CIFAR100 dataset in ./Dataset/
-- Download the [cifar_teachers](https://github.com/megvii-research/mdistiller/releases/tag/checkpoints) and untar it to `./ckpt/teacher`.
-- Our models checkpoints and trained tensorboard logs are at [ckpt and logs](https://github.com/megvii-research/mdistiller/releases/tag/checkpoints)
+- Please put the CIFAR100 dataset in `./Dataset/`
+- Download the teacher checkpoint `cifar_teachers.tar` at <https://github.com/megvii-research/mdistiller/releases/tag/checkpoints> and untar it to `./ckpt`.
 
-### 1. naive train student baselines and evaluation
-  ```bash
-  # for instance, train ResNet-20 on CIFAR-100.
-  python3 train_cifar_baseline.py \
-        --model_name resnet20_cifar \
-        --dataset 'cifar100' \
-        --epoch 240 \
-        --batch_size 64 \
-        --lr 0.1 \
-        --save_dir "./run/resnet20"
-  ```
-### 2. compute the class-mean of teachers on training set
+### 1. compute the class-mean of teachers on training set
+  - We provide the class-mean of teachers in `./ckpt/teacher` for the ease of reproducibility.
   ```bash
   python3 emb_fea_distribution.py \
         --model_name resnet56_cifar \
@@ -27,11 +16,11 @@
         --emb_size 64 \
         --dataset 'cifar100' \
         --batch_size 128
-  # The class-mean results, json file, be put in ./ckpt/teacher/.
-  # e.g., ckpt/teacher/resnet56/center_emb_train.json
+  # The results, json file, be put in ./ckpt/teacher/.
+  # e.g., ./ckpt/teacher/resnet56/center_emb_train.json
   ```
 
-### 3. train student by KD++
+### 2. train student by KD++
   ```bash
   # for instance, distillation from resnet-56 to resnet-20 by KD++.
   python3 train_cifar_kd.py \
@@ -50,7 +39,7 @@
   # other models, please refer to train_cifar.sh.
   ```
 
-### 4. DKD++/DIST++/ReviewKD++
+### 3. DKD++/DIST++/ReviewKD++
  - DKD++
     ```bash
     python3 train_cifar_dkd.py \
@@ -71,7 +60,7 @@
     ```
  - DIST++
 
-   cd ./DIST++
+   cd `./DIST++`
     ```bash
     python3 train_dist.py \
         --model_name shufflenetv2 \
@@ -90,7 +79,7 @@
     ```
  - ReviewKD++
 
-   cd ./ReviewKD++
+   cd `./ReviewKD++`
     ```bash
     python3 train_reviewkd.py \
         --model_name wrn40_1_cifar \

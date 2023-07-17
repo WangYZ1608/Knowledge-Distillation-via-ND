@@ -2,7 +2,6 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-
 __all__ = ['resnet50_cifar']
 
 class Bottleneck(nn.Module):
@@ -58,13 +57,6 @@ class ResNet(nn.Module):
         self.layer4 = self._make_layer(block, 512, num_blocks[3], stride=2)
         self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
 
-        # self.fc1 = nn.Sequential(
-        #     nn.Linear(512 * block.expansion, 1280),   # 1280是mobilenetv2的emb fea size.
-        #     nn.BatchNorm1d(1280),
-        #     nn.Dropout(0.5),
-        # )
-        # self.fc2 = nn.Linear(1280, num_class)
-
         self.linear = nn.Linear(512 * block.expansion, num_class)
 
         for m in self.modules():
@@ -92,9 +84,6 @@ class ResNet(nn.Module):
         x = self.layer4(x)
 
         x = self.avgpool(x)
-        # x = torch.flatten(x, 1)
-        # emb_fea = self.fc1(x)
-        # logits = self.fc2(emb_fea)
         emb_fea = torch.flatten(x, 1)
         logits = self.linear(emb_fea)
 
