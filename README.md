@@ -58,7 +58,7 @@ The ND loss, that regularizes the Norm and Direction of the student features, be
 
       - The distillation hyper-parameters are slightly different from the original [DeiT](https://arxiv.org/abs/2012.12877). We provide recipe as shown in the table.
         <div style="text-align:center"><img src="figure/recipe.png" width="40%" ></div>
-       The recipe follow [MAE](https://arxiv.org/abs/2111.06377), expect `batch size`, because lack gpu, so these parameters are not tuned. When using this recipe without ND, a distillation result of 83.35 is obtained, similar to DeiT.
+       The recipe follow [MAE](https://arxiv.org/abs/2111.06377), expect `batch size`, because lack gpu, and these parameters are not tuned. When using this recipe without ND, a distillation result of 83.35 is obtained, similar to DeiT.
 
       - The distillation process is very slow, it takes about 6.5 days to train on 4*A100, and half as slow as training ViT-b without distillation.
 
