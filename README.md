@@ -52,7 +52,7 @@ The ND loss, that regularizes the Norm and Direction of the student features, be
 
     | student | teacher | student | teacher | DeiT | **DeiT++** | checkpoint |
     |:-----------------:|:-----------------:|:-----------------:|:------------------:|:------------------:|:--------------------:|:--------------------:|
-    |DeiT-B | RegNetY-16GF | 81.8 | 82.9 | 83.4 | 83.6 ||
+    |DeiT-B | RegNetY-16GF | 81.8 | 82.9 | 83.4 | 83.6 |[baiduyun (7hnj)](https://pan.baidu.com/s/1OPu_pbmDq4tuPYvP1JUZNQ)|
     
     `Notes`
 
