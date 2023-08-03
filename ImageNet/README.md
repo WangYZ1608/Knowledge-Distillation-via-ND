@@ -87,7 +87,7 @@
     ```
 
 ### 5. ViT $\rightarrow$ ResNet
- - Install timm==0.6.12, and modify ViT to extract embedding features.
+ - Install `timm==0.6.12`, and modify ViT to extract embedding features.
  
  - cd `./ViT`
  - KD++
